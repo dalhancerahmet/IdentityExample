@@ -1,5 +1,6 @@
 ﻿using Identity.Domain;
 using Identity.Persistance.Contexts;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -15,7 +16,9 @@ namespace Identity.Persistance
         public static void AddPersistanceServices(this IServiceCollection services)
         {
             services.AddDbContext<IdentityExampleDbContext>(options => options.UseSqlServer("Server=AHMET\\SQLEXPRESS;Database=IdentityExampleDb;Encrypt=False; Trusted_Connection=True;"));
-            services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<IdentityExampleDbContext>();
+
+            services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<IdentityExampleDbContext>().AddDefaultTokenProviders();
+
         }
     }
 }

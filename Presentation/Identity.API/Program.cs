@@ -1,8 +1,11 @@
+using Identity.Application;
 using Identity.Persistance;
+using Identity.Persistance.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddPersistanceServices();
+builder.Services.AddApplicationServices();
 // Add services to the container.
 
 builder.Services.AddControllers();
